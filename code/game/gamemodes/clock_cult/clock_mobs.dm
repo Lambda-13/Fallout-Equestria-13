@@ -238,6 +238,11 @@
 		melee_damage_upper = 20
 		attacktext = "devastates"
 	else
+		speed = 4
+		melee_damage_lower = 4
+		melee_damage_upper = 4
+		attacktext = "taps"
+/* Перенос ломает всё мне до пизды разбираться ебитесь сами
 		switch((health/maxHealth) * 100)
 			if(100 to 70) //Bonuses to speed and damage at high health
 				speed = 0
@@ -269,7 +274,7 @@
 				melee_damage_lower = 4
 				melee_damage_upper = 4
 				attacktext = "taps"
-
+*/
 
 /mob/living/simple_animal/hostile/clockwork/marauder/death(gibbed)
 	emerge_from_host(0, 1)

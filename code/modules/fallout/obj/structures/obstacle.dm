@@ -148,7 +148,7 @@
 
 /obj/structure/barricade/security/New()
 	..()
-	addtimer(CALLBACK(src, .proc/deploy), 40)
+	addtimer(CALLBACK(src, PROC_REF(deploy)), 40)
 
 /obj/structure/barricade/security/proc/deploy()
 	icon_state = "barrier1"

@@ -41,7 +41,7 @@
 	to_chat(B.victim, "<span class='danger'>You feel the captive mind of [src] begin to resist your control.</span>")
 
 	var/delay = rand(150,250) + B.victim.brainloss
-	addtimer(CALLBACK(src, .proc/return_control, src.loc), delay)
+	addtimer(CALLBACK(src, PROC_REF(return_control), src.loc), delay)
 
 /mob/living/captive_brain/proc/return_control(mob/living/simple_animal/borer/B)
     if(!B || !B.controlling)
@@ -509,7 +509,7 @@ var/total_borer_hosts_needed = 10
 
 	leaving = TRUE
 
-	addtimer(CALLBACK(src, .proc/release_host), 100)
+	addtimer(CALLBACK(src, PROC_REF(release_host)), 100)
 
 /mob/living/simple_animal/borer/proc/release_host()
 	if(!victim || !src || qdeleted(victim) || qdeleted(src))
@@ -633,7 +633,7 @@ var/total_borer_hosts_needed = 10
 	bonding = TRUE
 
 	var/delay = 200+(victim.brainloss*5)
-	addtimer(CALLBACK(src, .proc/assume_control), delay)
+	addtimer(CALLBACK(src, PROC_REF(assume_control)), delay)
 
 /mob/living/simple_animal/borer/proc/assume_control()
 	if(!victim || !src || controlling || victim.stat == DEAD)

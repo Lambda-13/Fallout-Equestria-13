@@ -180,7 +180,7 @@
 	R.module = RM
 	R.update_module_innate()
 	RM.rebuild_modules()
-	addtimer(CALLBACK(RM, .proc/do_transform_animation), 0)
+	addtimer(CALLBACK(RM, PROC_REF(do_transform_animation)), 0)
 	qdel(src)
 	return RM
 

@@ -94,7 +94,7 @@
 
 		target.add_overlay(image_overlay, 1)
 		to_chat(user, "<span class='notice'>You plant the bomb. Timer counting down from [timer].</span>")
-		addtimer(CALLBACK(src, .proc/explode), timer * 10)
+		addtimer(CALLBACK(src, PROC_REF(explode)), timer * 10)
 
 /obj/item/weapon/c4/proc/explode()
 	if(qdeleted(src))

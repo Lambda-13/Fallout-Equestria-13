@@ -762,7 +762,7 @@ var/list/wall_runes = list()
 			W.density = TRUE
 			W.update_state()
 			W.spread_density()
-	density_timer = addtimer(CALLBACK(src, .proc/lose_density), 900, TIMER_STOPPABLE)
+	density_timer = addtimer(CALLBACK(src, PROC_REF(lose_density)), 900, TIMER_STOPPABLE)
 
 /obj/effect/rune/wall/proc/lose_density()
 	if(density)
@@ -772,7 +772,7 @@ var/list/wall_runes = list()
 		var/oldcolor = color
 		add_atom_colour("#696969", FIXED_COLOUR_PRIORITY)
 		animate(src, color = oldcolor, time = 50, easing = EASE_IN)
-		addtimer(CALLBACK(src, .proc/recharge), 50)
+		addtimer(CALLBACK(src, PROC_REF(recharge)), 50)
 
 /obj/effect/rune/wall/proc/recharge()
 	recharging = FALSE

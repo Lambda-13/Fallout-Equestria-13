@@ -99,7 +99,7 @@
 	playsound(src.loc, 'sound/ambience/signal.ogg', 75, 0)
 
 /obj/machinery/firealarm/proc/alarm_in(time)
-	addtimer(CALLBACK(src, .proc/alarm), time)
+	addtimer(CALLBACK(src, PROC_REF(alarm)), time)
 
 /obj/machinery/firealarm/proc/reset()
 	if(!is_operational())
@@ -108,7 +108,7 @@
 	A.firereset(src)
 
 /obj/machinery/firealarm/proc/reset_in(time)
-	addtimer(CALLBACK(src, .proc/reset), time)
+	addtimer(CALLBACK(src, PROC_REF(reset)), time)
 
 /obj/machinery/firealarm/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
 									datum/tgui/master_ui = null, datum/ui_state/state = default_state)

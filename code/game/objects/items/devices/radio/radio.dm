@@ -206,7 +206,7 @@
 			. = TRUE
 
 /obj/item/device/radio/talk_into(atom/movable/M, message, channel, list/spans)
-	addtimer(CALLBACK(src, .proc/talk_into_impl, M, message, channel, spans), 0)
+	addtimer(CALLBACK(src, PROC_REF(talk_into_impl), M, message, channel, spans), 0)
 	return ITALICS | REDUCE_RANGE
 
 /obj/item/device/radio/proc/talk_into_impl(atom/movable/M, message, channel, list/spans)

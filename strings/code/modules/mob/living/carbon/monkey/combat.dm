@@ -80,7 +80,7 @@
 	else if(istype(I,/obj/item/clothing))
 		var/obj/item/clothing/C = I
 		monkeyDrop(C)
-		addtimer(CALLBACK(src, .proc/pickup_and_wear, C), 5)
+		addtimer(CALLBACK(src, PROC_REF(pickup_and_wear), C), 5)
 		return TRUE
 
 	// EVERYTHING ELSE
@@ -149,7 +149,7 @@
 
 		// next to target
 		if(Adjacent(pickupTarget) || Adjacent(pickupTarget.loc))
-			addtimer(CALLBACK(src, .proc/walk2derpless, pickupTarget.loc), 0)
+			addtimer(CALLBACK(src, PROC_REF(walk2derpless), pickupTarget.loc), 0)
 
 			// who cares about these items, i want that one!
 			drop_all_held_items()
@@ -166,7 +166,7 @@
 				if(!pickpocketing)
 					pickpocketing = TRUE
 					M.visible_message("[src] starts trying to take [pickupTarget] from [M]", "[src] tries to take [pickupTarget]!")
-					addtimer(CALLBACK(src, .proc/pickpocket, M), 0)
+					addtimer(CALLBACK(src, PROC_REF(pickpocket), M), 0)
 
 		else
 			if(pickupTimer >= 8)
@@ -174,7 +174,7 @@
 				pickupTarget = null
 				pickupTimer = 0
 			else
-				addtimer(CALLBACK(src, .proc/walk2derpless, pickupTarget.loc), 0)
+				addtimer(CALLBACK(src, PROC_REF(walk2derpless), pickupTarget.loc), 0)
 
 		return TRUE
 
@@ -229,7 +229,7 @@
 				return TRUE
 
 			if(target != null)
-				addtimer(CALLBACK(src, .proc/walk2derpless, target), 0)
+				addtimer(CALLBACK(src, PROC_REF(walk2derpless), target), 0)
 
 			// pickup any nearby weapon
 			if(!pickupTarget && prob(MONKEY_WEAPON_PROB))
@@ -308,7 +308,7 @@
 
 			if(target.pulledby != src && !istype(target.pulledby, /mob/living/carbon/monkey/))
 
-				addtimer(CALLBACK(src, .proc/walk2derpless, target.loc), 0)
+				addtimer(CALLBACK(src, PROC_REF(walk2derpless), target.loc), 0)
 
 				if(Adjacent(target) && isturf(target.loc))
 					a_intent = INTENT_GRAB
@@ -321,11 +321,11 @@
 						frustration = 0
 
 			else if(!disposing_body)
-				addtimer(CALLBACK(src, .proc/walk2derpless, bodyDisposal.loc), 0)
+				addtimer(CALLBACK(src, PROC_REF(walk2derpless), bodyDisposal.loc), 0)
 
 				if(Adjacent(bodyDisposal))
 					disposing_body = TRUE
-					addtimer(CALLBACK(src, .proc/stuff_mob_in), 5)
+					addtimer(CALLBACK(src, PROC_REF(stuff_mob_in)), 5)
 
 				else
 					var/turf/olddist = get_dist(src, bodyDisposal)

@@ -288,7 +288,7 @@
 		return
 	visible_message("<span class='warning'>[src] begins to glow bright blue!</span>")
 	animate(src, alpha = 255, time = 10)
-	addtimer(CALLBACK(src, .proc/update_alpha), 10)
+	addtimer(CALLBACK(src, PROC_REF(update_alpha)), 10)
 	sleep(10)
 //as long as they're still on the sigil and are either not a servant or they're a servant AND it has remaining vitality
 	while(L && (!is_servant_of_ratvar(L) || (is_servant_of_ratvar(L) && vitality)) && get_turf(L) == get_turf(src))
@@ -350,7 +350,7 @@
 		visible_message("<span class='warning'>[src] slowly stops glowing!</span>")
 	if(sigil_active || alpha == 255)
 		animate(src, alpha = initial(alpha), time = 10)
-		addtimer(CALLBACK(src, .proc/update_alpha), 10)
+		addtimer(CALLBACK(src, PROC_REF(update_alpha)), 10)
 
 /obj/effect/clockwork/sigil/vitality/proc/update_alpha()
 	if(sigil_active)

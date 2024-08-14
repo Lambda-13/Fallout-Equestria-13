@@ -160,7 +160,7 @@
 				L.Weaken(3)
 				if(ishuman(L))
 					shake_camera(L, 20, 1)
-					addtimer(CALLBACK(L, /mob/living/carbon.proc/vomit), 20)
+					addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living/carbon, vomit)), 20)
 
 /**********************Resonator**********************/
 
@@ -232,7 +232,7 @@
 	creator = set_creator
 	res = set_resonator
 	check_pressure()
-	addtimer(CALLBACK(src, .proc/burst), timetoburst)
+	addtimer(CALLBACK(src, PROC_REF(burst)), timetoburst)
 
 /obj/effect/resonance/Destroy()
 	if(res)
@@ -360,7 +360,7 @@
 		return
 	if(!cooldown)
 		cooldown = TRUE
-		addtimer(CALLBACK(src, .proc/clear_cooldown), 40)
+		addtimer(CALLBACK(src, PROC_REF(clear_cooldown)), 40)
 		var/list/mobs = list()
 		mobs |= user
 		mineral_scan_pulse(mobs, get_turf(user))
@@ -563,7 +563,7 @@
 		D.fire()
 		charged = 0
 		icon_state = "mining_hammer1_uncharged"
-		addtimer(CALLBACK(src, .proc/Recharge), charge_time)
+		addtimer(CALLBACK(src, PROC_REF(Recharge)), charge_time)
 		return
 	if(proximity_flag && target == mark && isliving(target))
 		var/mob/living/L = target

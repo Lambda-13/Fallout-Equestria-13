@@ -76,7 +76,7 @@ Difficulty: Very Hard
 			double_spiral()
 		else
 			visible_message("<span class='colossus'>\"<b>Judgement.</b>\"</span>")
-			addtimer(CALLBACK(src, .proc/spiral_shoot, rand(0, 1)), 0)
+			addtimer(CALLBACK(src, PROC_REF(spiral_shoot), rand(0, 1)), 0)
 
 	else if(prob(20))
 		ranged_cooldown = world.time + 30
@@ -87,7 +87,7 @@ Difficulty: Very Hard
 			blast()
 		else
 			ranged_cooldown = world.time + 40
-			addtimer(CALLBACK(src, .proc/alternating_dir_shots), 0)
+			addtimer(CALLBACK(src, PROC_REF(alternating_dir_shots)), 0)
 
 
 /mob/living/simple_animal/hostile/megafauna/colossus/New()
@@ -138,8 +138,8 @@ Difficulty: Very Hard
 	visible_message("<span class='colossus'>\"<b>Die.</b>\"</span>")
 
 	sleep(10)
-	addtimer(CALLBACK(src, .proc/spiral_shoot), 0)
-	addtimer(CALLBACK(src, .proc/spiral_shoot, 1), 0)
+	addtimer(CALLBACK(src, PROC_REF(spiral_shoot)), 0)
+	addtimer(CALLBACK(src, PROC_REF(spiral_shoot), 1), 0)
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/spiral_shoot(negative = 0, counter_start = 1)
 	var/counter = counter_start
